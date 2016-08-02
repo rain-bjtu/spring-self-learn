@@ -1,5 +1,6 @@
 package init.destroy.method;
 
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -8,13 +9,12 @@ public class Main {
 	public static final String BASE_PACKAGE = "init.destroy.method";
 
 	public static void main(String[] args) {
-//		testByXML();
+		testByXML();
 //		System.out.println("==================+++==================");
 //		testByAnnotation();
-		testByConfig();
+//		testByConfig();
 	}
 
-	@SuppressWarnings("resource")
 	public static void testByXML() {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				CONFIG_FILE);
@@ -23,9 +23,11 @@ public class Main {
 		context.registerShutdownHook();
 		Dependency de = (Dependency) context.getBean("de");
 		de.say();
+		if (context instanceof ConfigurableApplicationContext) {
+			((ConfigurableApplicationContext) context).close();
+		}
 	}
 
-	@SuppressWarnings("resource")
 	public static void testByAnnotation() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan(BASE_PACKAGE);
@@ -36,9 +38,11 @@ public class Main {
 		context.registerShutdownHook();
 		Dependency de = (Dependency) context.getBean("de");
 		de.say();
+		if (context instanceof ConfigurableApplicationContext) {
+			((ConfigurableApplicationContext) context).close();
+		}
 	}
 	
-	@SuppressWarnings("resource")
 	public static void testByConfig() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.register(ConfigBean.class);
@@ -49,5 +53,8 @@ public class Main {
 		context.registerShutdownHook();
 		Dependency de = (Dependency) context.getBean("de");
 		de.say();
+		if (context instanceof ConfigurableApplicationContext) {
+			((ConfigurableApplicationContext) context).close();
+		}
 	}
 }

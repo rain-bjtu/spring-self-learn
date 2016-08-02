@@ -5,6 +5,7 @@ import java.net.URL;
 import org.junit.Test;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.FileSystemResource;
@@ -63,5 +64,13 @@ public class SpringBeanTest {
 		
 		String a = (String) context2.getBean("judy");
 		System.out.println(a);
+		
+		if (context instanceof ConfigurableApplicationContext) {
+			((ConfigurableApplicationContext) context).close();
+		}
+		if (context2 instanceof ConfigurableApplicationContext) {
+			((ConfigurableApplicationContext) context2).close();
+		}
+		
 	}
 }

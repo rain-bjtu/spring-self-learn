@@ -1,6 +1,6 @@
 package circle.setter.dependence;
 
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -15,15 +15,14 @@ public class Main {
 		testByAnnotation();
 	}
 
-	@SuppressWarnings("resource")
 	public static void testByXML() {
-		ApplicationContext context = new ClassPathXmlApplicationContext(
-				CONFIG_FILE);
-		B b = (B) context.getBean("b");
-		b.say();
+		try (ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(
+				CONFIG_FILE)) {
+			B b = (B) context.getBean("b");
+			b.say();
+		}
 	}
 
-	@SuppressWarnings("resource")
 	public static void testByAnnotation() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan(BASE_PACKAGE);
@@ -33,5 +32,8 @@ public class Main {
 		context.refresh();
 		B b = (B) context.getBean("b");
 		b.say();
+		if (context instanceof ConfigurableApplicationContext) {
+			((ConfigurableApplicationContext) context).close();
+		}
 	}
 }
