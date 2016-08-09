@@ -6,12 +6,12 @@ import spring.beans.inf.IWho;
 
 @Component("nick")
 public class Nick implements IWho {
-	private String name = "Nick";
+    private String name = "Nick";
 
-	@Override
-	public String whoAmI() {
-		System.out.println("I am " + name + "! ");
-		return name;
-	}
+    @Override
+    public String whoAmI() {
+        System.out.println("I am " + name + "! ");
+        return name;
+    }
 
 }

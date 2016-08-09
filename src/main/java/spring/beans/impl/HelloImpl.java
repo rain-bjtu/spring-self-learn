@@ -9,21 +9,20 @@ import spring.beans.inf.IWho;
 
 @Component("hello")
 public class HelloImpl implements IHello {
-	
-	@Autowired
-	private IWho who;
-	
-	@Value("${words}")
-	private String words;
-	
-	@Value("${num}")
-	private int num;
-	
 
-	@Override
-	public void sayHello() {
-		who.whoAmI();
-		System.out.println(words);
-	}
+    @Autowired
+    private IWho who;
+
+    @Value("${words}")
+    private String words;
+
+    @Value("${num}")
+    private int num;
+
+    @Override
+    public void sayHello() {
+        who.whoAmI();
+        System.out.println(words);
+    }
 
 }

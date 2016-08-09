@@ -7,7 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
 
     public static final String XML_CONFIG = Main.class.getPackage().getName().replace(".", "/")
-        + "/application-config.xml";
+            + "/application-config.xml";
 
     public static void main(String[] args) {
         testCommandManagerWithContextByXML();
@@ -18,7 +18,7 @@ public class Main {
     public static void testCommandManagerWithContextByXML() {
         try (ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(XML_CONFIG)) {
             CommandManagerWithContext manager = (CommandManagerWithContext) context
-                .getBean("commandManagerWithContext");
+                    .getBean("commandManagerWithContext");
             printSeparator();
             System.out.println("First Construct: " + manager.process());
             System.out.println("Second Construct: " + manager.process());
@@ -38,7 +38,7 @@ public class Main {
 
     public static void testCommandManagerByAnnotation() {
         try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(CommandManager.class,
-            AsyncCommand.class)) {
+                AsyncCommand.class)) {
             CommandManager manager = (CommandManager) context.getBean("commandManager");
             printSeparator();
             System.out.println("First Construct: " + manager.process());

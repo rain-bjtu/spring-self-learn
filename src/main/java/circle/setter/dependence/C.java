@@ -6,22 +6,22 @@ import org.springframework.stereotype.Component;
 @Component("c")
 public class C {
 
-	@Autowired
-	private A a;
+    @Autowired
+    private A a;
 
-	public C() {
-	}
+    public C() {
+    }
 
-	public A getA() {
-		return a;
-	}
+    public A getA() {
+        return a;
+    }
 
-	public void setA(A a) {
-		this.a = a;
-	}
-	
-	public void say() {
-		System.out.println("----C----");
-		a.say();
-	}
+    public void setA(A a) {
+        this.a = a;
+    }
+
+    public void say() {
+        System.out.println("----C----");
+        a.say();
+    }
 }

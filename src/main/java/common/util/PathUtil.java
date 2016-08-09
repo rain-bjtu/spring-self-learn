@@ -1,6 +1,5 @@
 package common.util;
 
-
 public class PathUtil {
 
     private PathUtil() {
