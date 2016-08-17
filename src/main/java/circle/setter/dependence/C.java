@@ -9,8 +9,7 @@ public class C {
     @Autowired
     private A a;
 
-    public C() {
-    }
+    public C() {}
 
     public A getA() {
         return a;

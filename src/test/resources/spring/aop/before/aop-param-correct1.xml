@@ -10,26 +10,13 @@
         http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
-        
-        <!-- 
-        http://www.springframework.org/schema/jdbc
-        http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
-        http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
-         -->
 
-	<bean id="say" class="spring.aop.SayImpl" />
-	<bean id="aspect" class="spring.aop.SayAspect"/>
+	<bean id="say" class="spring.aop.before.SayImpl" />
+	<bean id="aspect" class="spring.aop.before.SayAspect"/>
 	<aop:config>
-	<!-- 
-	<aop:aspect ref="aspect">
-           <aop:before pointcut="execution(* spring.aop..*.say(..)) and args(word)"
-              method="beforeAdvice(java.lang.String)" arg-names="word" />
-       </aop:aspect>
-	 -->
 	   <aop:aspect ref="aspect">
-           <aop:before pointcut="execution(* spring.aop..*.say(..)) and args(p1, p2)"
-              method="beforeAdvice(java.lang.String, java.lang.String)" arg-names="p2,p1"/>
+           <aop:before pointcut="execution(* spring.aop.before..*.say(..)) and args(words, who)"
+              method="beforeAdvice" />
        </aop:aspect>
     </aop:config> 
 

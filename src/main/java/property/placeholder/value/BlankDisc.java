@@ -8,8 +8,7 @@ public class BlankDisc implements CompactDisc {
 
     private String artist;
 
-    public BlankDisc() {
-    }
+    public BlankDisc() {}
 
     public BlankDisc(String title) {
         this.title = title;

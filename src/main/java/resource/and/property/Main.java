@@ -10,8 +10,8 @@ import java.util.Enumeration;
 import java.util.Properties;
 
 /**
- * Remember to close any stream when don't use again. The following codes don't
- * close the stream, and this is a bad habit.
+ * Remember to close any stream when don't use again. The following codes don't close the stream, and this is a bad
+ * habit.
  * 
  * @author rain
  *

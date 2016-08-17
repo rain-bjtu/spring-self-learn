@@ -2,8 +2,7 @@ package property.placeholder.value;
 
 public class Util {
 
-    private Util() {
-    }
+    private Util() {}
 
     public static void printDisc(CompactDisc disc) {
         final String separator = "------------------------------------------------------";

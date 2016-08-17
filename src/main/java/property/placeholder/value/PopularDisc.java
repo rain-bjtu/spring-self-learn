@@ -14,8 +14,7 @@ public class PopularDisc implements CompactDisc {
     @Value("${popular.artist}")
     private String artist;
 
-    public PopularDisc() {
-    }
+    public PopularDisc() {}
 
     public PopularDisc(String title) {
         this.title = title;

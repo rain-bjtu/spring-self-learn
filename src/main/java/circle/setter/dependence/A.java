@@ -10,8 +10,7 @@ public class A {
     @Resource(name = "b")
     private B b;
 
-    public A() {
-    }
+    public A() {}
 
     public B getB() {
         return b;
