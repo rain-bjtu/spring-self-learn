@@ -11,4 +11,6 @@ public interface IRemoteService {
     public int close(int seconds) throws Exception;
 
     public void errorOccur(int error) throws Exception;
+
+    public boolean isConnected(String username, String password);
 }
