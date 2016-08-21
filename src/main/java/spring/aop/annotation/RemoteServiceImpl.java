@@ -28,6 +28,12 @@ public class RemoteServiceImpl implements IRemoteService {
     }
 
     @Override
+    public String execute(String cmd, int times) {
+        System.out.format("Execute cmd {%s} %d times.\n", cmd, times);
+        return "Success!...";
+    }
+
+    @Override
     public int executeStatus(int cmdNumber) {
         System.out.println("Your cmd number is " + cmdNumber);
         return cmdNumber > 9 ? 1 : 0;
@@ -48,7 +54,7 @@ public class RemoteServiceImpl implements IRemoteService {
     }
 
     @Override
-    public void errorOccur(int error) throws Exception {
+    public String errorOccur(int error) throws Exception {
         try {
             switch (error) {
             case 1:
@@ -58,6 +64,7 @@ public class RemoteServiceImpl implements IRemoteService {
                 System.out.println("No error!");
                 break;
             }
+            return "OK!";
         } catch (Exception e) {
             System.out.println("Catch error: " + e.getMessage());
             throw new Exception("2");

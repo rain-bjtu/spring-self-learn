@@ -3,13 +3,15 @@ package spring.aop.annotation;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import common.util.SeparatorUtil;
 
-@Component("remoteAdvice")
+@Component("adviceOrder1")
 @Aspect
-public class RemoteAdvice {
+@Order(1)
+public class AdviceOrder1 {
 
     // @Before(value = "MethodSeparatorAspect.methodSeparatorPointcut()")
     @Before(value = "spring.aop.annotation.MethodSeparatorAspect.methodSeparatorPointcut()")
@@ -21,17 +23,5 @@ public class RemoteAdvice {
     public void afterFirst() {
         SeparatorUtil.printMethodSeparator("After Order 1");
         System.out.println();
-    }
-
-    @Before(value = "spring.aop.annotation.BeforeAspect.beforeLoginAspect(p)")
-    public void beforeLoginPrintUsername(String p) {
-        SeparatorUtil.printMethodSeparator("Before Order 2");
-        System.out.println("Username is: " + p);
-    }
-
-    @Before(value = "spring.aop.annotation.BeforeAspect.beforeIsConnectedAspect() && args(p, ..)")
-    public void beforeIsConnectedPrintUsername(String p) {
-        SeparatorUtil.printMethodSeparator("Before Order 2");
-        System.out.println("Username is: " + p);
     }
 }
