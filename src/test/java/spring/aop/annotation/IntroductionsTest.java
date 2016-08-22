@@ -3,19 +3,15 @@ package spring.aop.annotation;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class AfterFinalTest {
+public class IntroductionsTest {
+
     @Test
-    public void testAfter() {
+    public void testIntroduction() {
         try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext()) {
             context.register(AppConfig.class);
             context.refresh();
-            IRemoteService remote = context.getBean("remoteService", IRemoteService.class);
-            try {
-                remote.close(21);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            remote.isConnected("you", "pass");
+            IWho remote = context.getBean("remoteService", IWho.class);
+            remote.whoAmI();
         }
     }
 }

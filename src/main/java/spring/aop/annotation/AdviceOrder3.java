@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.DeclareParents;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -66,4 +67,12 @@ public class AdviceOrder3 {
         System.out.println("Use Combining pointcut match  execute method with 2 parameters!");
         System.out.format("cmd: {%s}, times: {%d}\n", p1, p2);
     }
+    
+    @After(value = "spring.aop.annotation.MethodPointcut.privatePointcut()")
+    public void afterPrivateMethodPrintInfo() {
+        System.out.println("After private method aspect...");
+    }
+
+    @DeclareParents(value = "spring.aop.annotation.IRemoteService+", defaultImpl = WhoImpl.class)
+    private IWho who;
 }

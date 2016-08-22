@@ -77,6 +77,8 @@ public class RemoteServiceImpl implements IRemoteService {
     public boolean isConnected(String username, String password) {
         System.out.println("Is Connected???");
         printCheckInfo();
+        // login's advice will not take effect
+        // login("you", "pass");
         if (username.equals("username") && password.equals("password")) {
             return true;
         }

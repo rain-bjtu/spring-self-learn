@@ -19,8 +19,9 @@ public class AdviceOrder2 {
         SeparatorUtil.printMethodSeparator("=", "Before Order 2");
     }
 
+    // this is a private advice, but it still function
     @After(value = "spring.aop.annotation.MethodSeparatorAspect.methodSeparatorPointcut()")
-    public void afterFirst() {
+    private void afterFirst() {
         SeparatorUtil.printMethodSeparator("=", "After Order 2");
     }
 }

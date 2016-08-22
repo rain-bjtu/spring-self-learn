@@ -19,4 +19,8 @@ public class MethodPointcut {
 
     @Pointcut(value = "execution(* spring.aop.annotation.IRemoteService+.errorOccur(..))")
     public void errorOccurPointcut() {}
+    
+    // this pointcut will not take effect, because it want to cut across a private method
+    @Pointcut(value = "execution(private * spring.aop.annotation.IRemoteService+.*(..))")
+    public void privatePointcut() {}
 }
