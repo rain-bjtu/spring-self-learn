@@ -18,7 +18,9 @@
         http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
          -->
 
-    <context:property-placeholder location="classpath:/property/placeholder/value/app.properties" />
+    <context:property-placeholder location="classpath:/property/placeholder/value/abc.properties,classpath:/property/placeholder/value/app.properties" />
+    <!--  <context:property-placeholder location="classpath:/property/placeholder/value/app.properties" />
+    -->
 	<bean id="blank" class="property.placeholder.value.BlankDisc">
 	   <constructor-arg name="title" value="${blank.title}" />
 	   <constructor-arg name="artist" value="${blank.artist}" />
